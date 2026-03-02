@@ -125,8 +125,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="mt-8 pt-8 border-t text-center" style={{ borderColor: 'var(--border)' }}>
               <p className="text-sm" style={{ color: 'var(--text-faint)' }}>© 2026 One Community Church. All rights reserved.</p>
               <a href="https://www.6leversconsulting.com" target="_blank" rel="noopener noreferrer"
-                className="text-xs mt-2 block transition-colors hover:text-red-600"
-                style={{ color: 'var(--text-faint)', opacity: 0.6 }}>
+                className="text-xs mt-2 block transition-colors duration-200 hover:text-red-600"
+                style={{ color: 'var(--text-faint)' }}>
                 Powered by AI · Built by 6 Levers AI
               </a>
             </div>
