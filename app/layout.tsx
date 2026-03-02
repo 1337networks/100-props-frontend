@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
+import ThemeToggle from '../components/ThemeToggle'
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -21,74 +22,105 @@ export const metadata: Metadata = {
   description: 'AI-powered sermon prop discovery tool. Find the perfect prop for your message.',
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${playfair.variable} ${jakarta.variable}`}>
-      <body>
-        {/* Top accent border */}
-        <div className="fixed top-0 left-0 right-0 h-[2px] bg-occ-red z-50" />
+      {/* Inline script: apply saved theme BEFORE paint to avoid flash */}
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.classList.add('dark')}}catch(e){}})()`,
+          }}
+        />
+      </head>
+      <body style={{ backgroundColor: 'var(--bg)', color: 'var(--text)' }}>
+        {/* OCC Red top accent bar */}
+        <div className="fixed top-0 left-0 right-0 h-[2px] z-50" style={{ background: '#dc2626' }} />
 
-        {/* Glassmorphism Nav */}
-        <nav className="fixed top-[2px] left-0 right-0 z-40 border-b border-white/5" style={{background:"rgba(10,10,10,0.85)", backdropFilter:"blur(16px)", WebkitBackdropFilter:"blur(16px)"}}>
+        {/* Nav */}
+        <nav className="glass-nav fixed top-[2px] left-0 right-0 z-40">
           <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             {/* Logo */}
             <a href="/" className="flex items-center gap-3 group">
-              <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-red-600 font-bold text-white text-lg font-display leading-none select-none">P</div>
+              <img
+                src="/occ-logo-white.jpg"
+                alt="One Community Church"
+                width={36}
+                height={36}
+                className="h-9 w-auto object-contain rounded"
+                style={{ filter: 'var(--logo-filter, none)' }}
+              />
               <div className="flex flex-col leading-tight">
-                <span className="font-display font-bold text-white text-lg tracking-tight">100 Props</span>
-                <span className="text-[10px] text-gray-500 tracking-widest uppercase">One Community Church</span>
+                <span className="font-display font-bold text-lg tracking-tight" style={{ color: 'var(--text)' }}>
+                  100 Props
+                </span>
+                <span className="text-[10px] tracking-widest uppercase" style={{ color: 'var(--text-faint)' }}>
+                  One Community Church
+                </span>
               </div>
             </a>
 
-            {/* Desktop Nav Links */}
+            {/* Desktop Nav */}
             <div className="hidden md:flex items-center gap-8">
-              <a href="/" className="text-gray-400 hover:text-white text-sm font-medium tracking-wide transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-red-600 hover:after:w-full after:transition-all">Search</a>
-              <a href="/browse" className="text-gray-400 hover:text-white text-sm font-medium tracking-wide transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-red-600 hover:after:w-full after:transition-all">Browse All</a>
-              <a href="/topics" className="text-gray-400 hover:text-white text-sm font-medium tracking-wide transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-red-600 hover:after:w-full after:transition-all">Topics</a>
+              <a href="/"
+                className="text-sm font-medium transition-colors duration-200 hover:text-red-600"
+                style={{ color: 'var(--text-muted)' }}>
+                Search
+              </a>
+              <a href="/browse"
+                className="text-sm font-medium transition-colors duration-200 hover:text-red-600"
+                style={{ color: 'var(--text-muted)' }}>
+                Browse All
+              </a>
+              <a href="/topics"
+                className="text-sm font-medium transition-colors duration-200 hover:text-red-600"
+                style={{ color: 'var(--text-muted)' }}>
+                Topics
+              </a>
+              <ThemeToggle />
             </div>
 
-            {/* Mobile Hamburger (pure CSS toggle) */}
-            <label className="md:hidden flex flex-col gap-[5px] cursor-pointer group" htmlFor="mobile-menu-toggle">
-              <span className="w-6 h-[2px] bg-gray-400 group-hover:bg-white transition-colors" />
-              <span className="w-4 h-[2px] bg-gray-400 group-hover:bg-white transition-colors" />
-              <span className="w-6 h-[2px] bg-gray-400 group-hover:bg-white transition-colors" />
-            </label>
+            {/* Mobile: toggle + hamburger */}
+            <div className="md:hidden flex items-center gap-3">
+              <ThemeToggle />
+              <div className="flex flex-col gap-[5px] cursor-pointer">
+                <span className="w-6 h-[2px] rounded" style={{ background: 'var(--text-muted)' }} />
+                <span className="w-4 h-[2px] rounded" style={{ background: 'var(--text-muted)' }} />
+                <span className="w-6 h-[2px] rounded" style={{ background: 'var(--text-muted)' }} />
+              </div>
+            </div>
           </div>
 
           {/* Mobile Menu */}
-          <div className="md:hidden border-t border-white/5">
+          <div className="md:hidden border-t" style={{ borderColor: 'var(--border)' }}>
             <div className="px-6 py-4 flex flex-col gap-4">
-              <a href="/" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Search</a>
-              <a href="/browse" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Browse All</a>
-              <a href="/topics" className="text-gray-300 hover:text-white transition-colors text-sm font-medium">Topics</a>
+              <a href="/" className="text-sm font-medium transition-colors hover:text-red-600" style={{ color: 'var(--text-muted)' }}>Search</a>
+              <a href="/browse" className="text-sm font-medium transition-colors hover:text-red-600" style={{ color: 'var(--text-muted)' }}>Browse All</a>
+              <a href="/topics" className="text-sm font-medium transition-colors hover:text-red-600" style={{ color: 'var(--text-muted)' }}>Topics</a>
             </div>
           </div>
         </nav>
 
-        {/* Main content with nav offset */}
-        <main className="pt-[72px] relative z-10">{children}</main>
+        {/* Main */}
+        <main className="pt-[72px] relative">{children}</main>
 
         {/* Footer */}
-        <footer className="relative z-10 border-t border-occ-border mt-24">
+        <footer className="border-t mt-24" style={{ borderColor: 'var(--border)' }}>
           <div className="max-w-7xl mx-auto px-6 py-12">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="flex flex-col items-center md:items-start gap-1">
-                <span className="font-display font-bold text-white text-xl">100 Props</span>
-                <span className="text-xs text-gray-600 tracking-widest uppercase">One Community Church</span>
+                <span className="font-display font-bold text-xl" style={{ color: 'var(--text)' }}>100 Props</span>
+                <span className="text-xs tracking-widest uppercase" style={{ color: 'var(--text-faint)' }}>One Community Church</span>
               </div>
               <div className="flex gap-8">
-                <a href="/" className="text-gray-500 hover:text-gray-300 text-sm transition-colors">Search</a>
-                <a href="/browse" className="text-gray-500 hover:text-gray-300 text-sm transition-colors">Browse All</a>
-                <a href="/topics" className="text-gray-500 hover:text-gray-300 text-sm transition-colors">Topics</a>
+                <a href="/" className="text-sm transition-colors hover:text-red-600" style={{ color: 'var(--text-faint)' }}>Search</a>
+                <a href="/browse" className="text-sm transition-colors hover:text-red-600" style={{ color: 'var(--text-faint)' }}>Browse All</a>
+                <a href="/topics" className="text-sm transition-colors hover:text-red-600" style={{ color: 'var(--text-faint)' }}>Topics</a>
               </div>
             </div>
-            <div className="mt-8 pt-8 border-t border-occ-border/50 text-center">
-              <p className="text-gray-600 text-sm">© 2026 One Community Church. All rights reserved.</p>
-              <p className="text-gray-700 text-xs mt-2">Powered by AI · Built by 6 Levers AI</p>
+            <div className="mt-8 pt-8 border-t text-center" style={{ borderColor: 'var(--border)' }}>
+              <p className="text-sm" style={{ color: 'var(--text-faint)' }}>© 2026 One Community Church. All rights reserved.</p>
+              <p className="text-xs mt-2" style={{ color: 'var(--text-faint)', opacity: 0.6 }}>Powered by AI · Built by 6 Levers AI</p>
             </div>
           </div>
         </footer>

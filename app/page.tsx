@@ -36,7 +36,7 @@ function ParticleField() {
       <div
         className="absolute inset-0"
         style={{
-          background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(30,10,10,0.8) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(220,38,38,0.04) 0%, transparent 70%)',
         }}
       />
       {/* Red accent glow, off-center */}
@@ -120,8 +120,8 @@ function PropCard({ prop, index }: { prop: Prop; index: number }) {
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center">
-            <div className="text-5xl opacity-20">🎭</div>
+          <div className="w-full h-full flex items-center justify-center" style={{background:"var(--surface-2)"}}>
+            <div className="text-5xl opacity-30">🎭</div>
           </div>
         )}
         {/* Gradient overlay */}
@@ -136,10 +136,10 @@ function PropCard({ prop, index }: { prop: Prop; index: number }) {
 
       {/* Content */}
       <div className="p-6 flex flex-col gap-3 flex-1">
-        <h3 className="font-display text-xl font-bold text-white leading-snug">
+        <h3 className="font-display text-xl font-bold leading-snug" style={{color:"var(--text)"}}>
           {prop.prop_name}
         </h3>
-        <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
+        <p className="text-sm leading-relaxed line-clamp-3" style={{color:"var(--text-muted)"}}>
           {prop.message_connection}
         </p>
 
@@ -224,8 +224,8 @@ function HowItWorks() {
     <section className="py-20 px-4 max-w-6xl mx-auto">
       <div className="text-center mb-14">
         <div className="red-rule mx-auto mb-6" />
-        <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">How It Works</h2>
-        <p className="text-gray-400 text-lg max-w-xl mx-auto">
+        <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{color:"var(--text)"}}>How It Works</h2>
+        <p className="text-lg max-w-xl mx-auto" style={{color:"var(--text-muted)"}}>
           Stop guessing. Start with AI-powered discovery across 100 hand-curated sermon props.
         </p>
       </div>
@@ -238,24 +238,20 @@ function HowItWorks() {
           <div
             key={i}
             className="relative p-8 rounded-2xl flex flex-col gap-5"
-            style={{
-              background: 'linear-gradient(135deg, rgba(26,26,26,0.9) 0%, rgba(20,20,20,0.6) 100%)',
-              border: '1px solid rgba(42,42,42,0.8)',
-              animationDelay: `${i * 0.15}s`,
-            }}
+            style={{ background: 'var(--surface)', border: '1.5px solid var(--border)', animationDelay: `${i * 0.15}s` }}
           >
             <div className="flex items-start justify-between">
               <div className="text-occ-red">{step.icon}</div>
               <span
                 className="font-display text-6xl font-bold leading-none"
-                style={{ color: 'rgba(42,42,42,0.8)' }}
+                style={{ color: 'var(--border-2)', opacity: 0.6 }}
               >
                 {step.number}
               </span>
             </div>
             <div>
-              <h3 className="font-display text-2xl font-bold text-white mb-3">{step.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">{step.desc}</p>
+              <h3 className="font-display text-2xl font-bold mb-3" style={{color:"var(--text)"}}>{step.title}</h3>
+              <p className="text-sm leading-relaxed" style={{color:"var(--text-muted)"}}>{step.desc}</p>
             </div>
           </div>
         ))}
@@ -297,9 +293,7 @@ export default function Home() {
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section
         className="relative min-h-[92vh] flex flex-col items-center justify-center text-center px-4"
-        style={{
-          background: 'linear-gradient(160deg, #0a0a0a 0%, #120608 40%, #0a0a0a 100%)',
-        }}
+        style={{ background: 'var(--bg)' }}
       >
         <ParticleField />
 
@@ -307,13 +301,13 @@ export default function Home() {
           {/* Eyebrow */}
           <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full glass-light">
             <span className="w-2 h-2 rounded-full bg-occ-red animate-pulse" />
-            <span className="text-gray-400 text-sm tracking-widest uppercase">One Community Church</span>
+            <span className="text-sm tracking-widest uppercase" style={{color:"var(--text-muted)"}}>One Community Church</span>
           </div>
 
           {/* Headline */}
           <h1
-            className="font-display font-bold text-white text-shadow-lg mb-6 leading-[0.95]"
-            style={{ fontSize: 'clamp(3.5rem, 9vw, 7.5rem)', letterSpacing: '-0.03em' }}
+            className="font-display font-bold mb-6 leading-[0.95]"
+            style={{ color: 'var(--text)', fontSize: 'clamp(3.5rem, 9vw, 7.5rem)', letterSpacing: '-0.03em' }}
           >
             Find the{' '}
             <span
@@ -328,7 +322,7 @@ export default function Home() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+          <p className="text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed" style={{color:"var(--text-muted)"}}>
             AI-powered discovery across 100 curated sermon props. Describe your message — we'll find the visual that makes it land.
           </p>
 
@@ -379,18 +373,18 @@ export default function Home() {
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
-          <span className="text-xs text-gray-500 tracking-widest uppercase">Scroll</span>
+          <span className="text-xs tracking-widest uppercase" style={{color:"var(--text-faint)"}}>Scroll</span>
           <div className="w-px h-8 bg-gradient-to-b from-gray-500 to-transparent" />
         </div>
       </section>
 
       {/* ── Results / Empty State ─────────────────────────── */}
-      <section className="max-w-7xl mx-auto px-4 md:px-6 py-16">
+      <section className="max-w-7xl mx-auto px-4 md:px-6 py-16" style={{backgroundColor:"var(--bg)"}}>
         {/* Results Header */}
         {searched && (
           <div className="mb-10">
             <div className="red-rule mb-4" />
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-white">
+            <h2 className="font-display text-3xl md:text-4xl font-bold" style={{color:"var(--text)"}}>
               {loading
                 ? 'Finding matches...'
                 : results.length > 0
@@ -398,7 +392,7 @@ export default function Home() {
                   : 'No props found'}
             </h2>
             {!loading && results.length > 0 && (
-              <p className="text-gray-500 mt-2 text-sm">
+              <p className="mt-2 text-sm" style={{color:"var(--text-muted)"}}>
                 Showing top matches for &ldquo;{query}&rdquo;
               </p>
             )}
@@ -412,13 +406,13 @@ export default function Home() {
               <div
                 key={i}
                 className="rounded-2xl overflow-hidden"
-                style={{ background: 'var(--occ-surface)', border: '1px solid var(--occ-border)' }}
+                style={{ background: 'var(--surface)', border: '1.5px solid var(--border)' }}
               >
-                <div className="aspect-video bg-occ-muted animate-pulse" />
+                <div className="aspect-video animate-pulse" style={{background:"var(--surface-2)"}} />
                 <div className="p-6 space-y-3">
-                  <div className="h-5 bg-occ-muted rounded animate-pulse w-3/4" />
-                  <div className="h-4 bg-occ-muted rounded animate-pulse w-full" />
-                  <div className="h-4 bg-occ-muted rounded animate-pulse w-5/6" />
+                  <div className="h-5 rounded animate-pulse w-3/4" style={{background:"var(--surface-2)"}} />
+                  <div className="h-4 rounded animate-pulse w-full" style={{background:"var(--surface-2)"}} />
+                  <div className="h-4 rounded animate-pulse w-5/6" style={{background:"var(--surface-2)"}} />
                 </div>
               </div>
             ))}
@@ -438,8 +432,8 @@ export default function Home() {
         {searched && !loading && results.length === 0 && (
           <div className="text-center py-20">
             <div className="text-6xl mb-6 opacity-30">🎭</div>
-            <h3 className="font-display text-2xl font-bold text-white mb-3">No props found</h3>
-            <p className="text-gray-500 mb-8">Try a different phrase or browse by topic below.</p>
+            <h3 className="font-display text-2xl font-bold mb-3" style={{color:"var(--text)"}}>No props found</h3>
+            <p className="mb-8" style={{color:"var(--text-muted)"}}>Try a different phrase or browse by topic below.</p>
             <a
               href="/topics"
               className="inline-flex items-center gap-2 bg-occ-red hover:bg-occ-red-dark text-white px-6 py-3 rounded-full font-semibold text-sm transition-colors"
