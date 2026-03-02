@@ -33,17 +33,11 @@ export default function RootLayout({
         <div className="fixed top-0 left-0 right-0 h-[2px] bg-occ-red z-50" />
 
         {/* Glassmorphism Nav */}
-        <nav className="fixed top-[2px] left-0 right-0 z-40 glass border-b border-white/5">
+        <nav className="fixed top-[2px] left-0 right-0 z-40 border-b border-white/5" style={{background:"rgba(10,10,10,0.85)", backdropFilter:"blur(16px)", WebkitBackdropFilter:"blur(16px)"}}>
           <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             {/* Logo */}
             <a href="/" className="flex items-center gap-3 group">
-              <div className="relative">
-                <img
-                  src="/occ-logo-white.jpg"
-                  alt="One Community Church"
-                  className="h-9 opacity-90 group-hover:opacity-100 transition-opacity"
-                />
-              </div>
+              <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-red-600 font-bold text-white text-lg font-display leading-none select-none">P</div>
               <div className="flex flex-col leading-tight">
                 <span className="font-display font-bold text-white text-lg tracking-tight">100 Props</span>
                 <span className="text-[10px] text-gray-500 tracking-widest uppercase">One Community Church</span>
@@ -52,9 +46,9 @@ export default function RootLayout({
 
             {/* Desktop Nav Links */}
             <div className="hidden md:flex items-center gap-8">
-              <a href="/" className="nav-link">Search</a>
-              <a href="/browse" className="nav-link">Browse All</a>
-              <a href="/topics" className="nav-link">Topics</a>
+              <a href="/" className="text-gray-400 hover:text-white text-sm font-medium tracking-wide transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-red-600 hover:after:w-full after:transition-all">Search</a>
+              <a href="/browse" className="text-gray-400 hover:text-white text-sm font-medium tracking-wide transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-red-600 hover:after:w-full after:transition-all">Browse All</a>
+              <a href="/topics" className="text-gray-400 hover:text-white text-sm font-medium tracking-wide transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-red-600 hover:after:w-full after:transition-all">Topics</a>
             </div>
 
             {/* Mobile Hamburger (pure CSS toggle) */}

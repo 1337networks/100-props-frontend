@@ -303,7 +303,7 @@ export default function Home() {
       >
         <ParticleField />
 
-        <div className="relative z-10 max-w-4xl mx-auto">
+        <div className="relative z-10 w-full max-w-4xl mx-auto" style={{textAlign:'center'}}>
           {/* Eyebrow */}
           <div className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full glass-light">
             <span className="w-2 h-2 rounded-full bg-occ-red animate-pulse" />
@@ -340,7 +340,8 @@ export default function Home() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="e.g. 'overcoming fear' or 'Galatians 5: freedom'"
-                className="search-input pr-36"
+                className="w-full px-8 py-5 text-lg rounded-full text-white pr-36 outline-none transition-all duration-300 focus:ring-2 focus:ring-red-600/30"
+                style={{background:'rgba(255,255,255,0.08)', border:'1px solid rgba(255,255,255,0.15)', backdropFilter:'blur(12px)'}}
                 autoFocus
               />
               <button
@@ -367,7 +368,8 @@ export default function Home() {
               <button
                 key={topic}
                 onClick={() => runSearch(topic)}
-                className="topic-pill"
+                className="px-5 py-2 rounded-full text-sm font-medium cursor-pointer transition-all duration-200 hover:bg-red-600/20 hover:text-white hover:border-red-500/50 text-gray-300"
+                style={{background:'rgba(255,255,255,0.06)', border:'1px solid rgba(255,255,255,0.1)'}}
               >
                 {topic}
               </button>
