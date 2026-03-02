@@ -42,13 +42,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             {/* Logo */}
             <a href="/" className="flex items-center gap-3 group">
+              {/* Light mode logo */}
+              <img
+                src="/occ-logo-light.jpg"
+                alt="One Community Church"
+                className="h-9 w-auto object-contain block dark:hidden"
+              />
+              {/* Dark mode logo */}
               <img
                 src="/occ-logo-white.jpg"
                 alt="One Community Church"
-                width={36}
-                height={36}
-                className="h-9 w-auto object-contain rounded"
-                style={{ filter: 'var(--logo-filter, none)' }}
+                className="h-9 w-auto object-contain hidden dark:block"
               />
               <div className="flex flex-col leading-tight">
                 <span className="font-display font-bold text-lg tracking-tight" style={{ color: 'var(--text)' }}>
