@@ -222,7 +222,7 @@ export default function TopicsPage() {
                 href="/"
                 className="inline-flex items-center gap-2 bg-occ-red hover:bg-occ-red-dark text-white px-8 py-3 rounded-full font-semibold text-sm transition-colors"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16" style={{display:"block"}}>
                   <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
                 </svg>
                 Search with AI
