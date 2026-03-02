@@ -42,9 +42,9 @@ function PropModal({ prop, onClose }: { prop: Prop; onClose: () => void }) {
         </button>
 
         {/* Image */}
-        <div className="aspect-video bg-occ-charcoal overflow-hidden rounded-t-2xl relative">
+        <div className="aspect-video bg-occ-charcoal overflow-hidden rounded-t-2xl relative flex items-center justify-center">
           {prop.image_url ? (
-            <img src={prop.image_url} alt={prop.prop_name} className="w-full h-full object-cover" />
+            <img src={prop.image_url} alt={prop.prop_name} className="w-full h-full object-contain" />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
               <div className="text-8xl opacity-20">🎭</div>
@@ -287,12 +287,12 @@ export default function BrowsePage() {
                 onClick={() => setSelectedProp(prop)}
               >
                 {/* Image */}
-                <div className="aspect-video bg-occ-charcoal overflow-hidden relative">
+                <div className="aspect-video bg-occ-charcoal overflow-hidden relative flex items-center justify-center">
                   {prop.image_url ? (
                     <img
                       src={prop.image_url}
                       alt={prop.prop_name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full object-contain"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">

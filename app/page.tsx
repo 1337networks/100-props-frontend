@@ -114,8 +114,8 @@ function PropModal({ prop, onClose }: { prop: Prop; onClose: () => void }) {
 
         {/* Image fallback */}
         {!embedUrl && prop.image_url && (
-          <div className="aspect-video w-full rounded-t-2xl overflow-hidden">
-            <img src={prop.image_url} alt={prop.prop_name} className="w-full h-full object-cover" />
+          <div className="aspect-video w-full rounded-t-2xl overflow-hidden flex items-center justify-center" style={{ background: 'var(--surface-2)' }}>
+            <img src={prop.image_url} alt={prop.prop_name} className="w-full h-full object-contain" />
           </div>
         )}
 
@@ -205,9 +205,9 @@ function PropCard({ prop, index, onClick }: { prop: Prop; index: number; onClick
       style={{ animationDelay: `${Math.min(index * 0.08, 0.6)}s` }}
       onClick={onClick}
     >
-      <div className="aspect-video overflow-hidden relative" style={{ background: 'var(--surface-2)' }}>
+      <div className="aspect-video overflow-hidden relative flex items-center justify-center" style={{ background: 'var(--surface-2)' }}>
         {prop.image_url ? (
-          <img src={prop.image_url} alt={prop.prop_name} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+          <img src={prop.image_url} alt={prop.prop_name} className="w-full h-full object-contain" />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
             <div className="text-5xl opacity-20">🎭</div>
