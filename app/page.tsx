@@ -334,8 +334,7 @@ export default function Home() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="e.g. 'overcoming fear' or 'Galatians 5: freedom'"
-                className="w-full px-8 py-5 text-lg rounded-full text-white pr-36 outline-none transition-all duration-300 focus:ring-2 focus:ring-red-600/30"
-                style={{background:'rgba(255,255,255,0.08)', border:'1px solid rgba(255,255,255,0.15)', backdropFilter:'blur(12px)'}}
+                className="search-input"
                 autoFocus
               />
               <button
@@ -362,8 +361,7 @@ export default function Home() {
               <button
                 key={topic}
                 onClick={() => runSearch(topic)}
-                className="px-5 py-2 rounded-full text-sm font-medium cursor-pointer transition-all duration-200 hover:bg-red-600/20 hover:text-white hover:border-red-500/50 text-gray-300"
-                style={{background:'rgba(255,255,255,0.06)', border:'1px solid rgba(255,255,255,0.1)'}}
+                className="topic-pill"
               >
                 {topic}
               </button>
@@ -372,7 +370,7 @@ export default function Home() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-30">
           <span className="text-xs tracking-widest uppercase" style={{color:"var(--text-faint)"}}>Scroll</span>
           <div className="w-px h-8 bg-gradient-to-b from-gray-500 to-transparent" />
         </div>
