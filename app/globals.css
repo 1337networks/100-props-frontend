@@ -74,10 +74,17 @@
     font-size: 1.125rem;
     border-radius: 9999px;
     color: var(--text);
-    background: var(--surface);
-    border: 1.5px solid var(--border);
+    background: #ffffff;
+    border: 2px solid var(--border-2);
     outline: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+
+  .dark .search-input {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: none;
   }
 
   .search-input::placeholder {
@@ -147,10 +154,17 @@
     font-size: 0.875rem;
     font-weight: 500;
     cursor: pointer;
-    background: var(--surface);
+    background: #ffffff;
     color: var(--text-muted);
-    border: 1.5px solid var(--border);
+    border: 1.5px solid var(--border-2);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     transition: all 0.25s ease;
+  }
+
+  .dark .topic-pill {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: none;
   }
 
   .topic-pill:hover {
